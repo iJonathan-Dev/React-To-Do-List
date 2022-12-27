@@ -38,6 +38,22 @@ const ToDoApp = () => {
     <div className="container">
       <AddToDoForm fetchData={fetchData} />
       {toDoListData && <ListView toDoListData={toDoListData} fetchData={fetchData} />}
+      <button class={tabs === "Incomplete" ? "active" : ""} onClick={() => setTabs("Incomplete")}>
+        Incomplete
+      </button>
+      <button class={tabs === "complete" ? "active" : ""} onClick={() => setTabs("Complete")}>
+        Complete
+      </button>
+      {/* Error Message */}
+      {error && <p>Failed to Fetch Data!</p>}
+      {/* Incomplete Tab */}
+      {tabs == "Incomplete" && toDoIncomplete && !error && <ListView toDoListData={toDoIncomplete} fetchData={fetchData} />}
+      {/* Empty Incomplete Tab */}
+      {tabs == "Incomplete" && toDoIncomplete == 0 && !error && <p>Please Enter Task!</p>}
+      {/* Complete Tab */}
+      {tabs == "Complete" && toDoComplete && !error && <ListView toDoListData={toDoComplete} fetchData={fetchData} />}
+      {/* Empty Complete Tab */}
+      {tabs == "Complete" && toDoComplete == 0 && !error && <p>No Completed Task!</p>}
     </div>
   );
 };
