@@ -22,8 +22,15 @@ const ToDoApp = () => {
       .then((data) => {
         //Filter Incomplete Data
         const result = data.filter((item) => item.status == "incomplete");
+        //Filter Incomplete To Do List
+        const resultIncomplete = data.filter((item) => item.status == "incomplete");
+        setTodoIncomplete(resultIncomplete);
 
         setTodoListData(result);
+        //Filter Completed To Do List
+        const resultComplete = data.filter((item) => item.status == "complete");
+        setTodoComplete(resultComplete);
+        console.log(resultComplete);
       })
       .catch((error) => {
         console.error("Error:", error);
