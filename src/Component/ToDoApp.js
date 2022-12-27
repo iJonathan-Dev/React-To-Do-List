@@ -4,8 +4,13 @@ import ListView from "./ListView";
 import { DBUrl } from "./DBUrl";
 
 const ToDoApp = () => {
-  const [toDoListData, setTodoListData] = useState("");
   const [toDoIncomplete, setTodoIncomplete] = useState("");
+
+  const [toDoComplete, setTodoComplete] = useState("");
+
+  const [tabs, setTabs] = useState("Incomplete");
+
+  const [error, setError] = useState(null);
 
   const fetchData = () => {
     fetch(DBUrl)
@@ -20,13 +25,10 @@ const ToDoApp = () => {
         }
       })
       .then((data) => {
-        //Filter Incomplete Data
-        const result = data.filter((item) => item.status == "incomplete");
         //Filter Incomplete To Do List
         const resultIncomplete = data.filter((item) => item.status == "incomplete");
         setTodoIncomplete(resultIncomplete);
 
-        setTodoListData(result);
         //Filter Completed To Do List
         const resultComplete = data.filter((item) => item.status == "complete");
         setTodoComplete(resultComplete);
@@ -46,7 +48,6 @@ const ToDoApp = () => {
     <div className="container">
       <h1 class="title">Simply To Do List App</h1>
       <AddToDoForm fetchData={fetchData} />
-      {toDoListData && <ListView toDoListData={toDoListData} fetchData={fetchData} />}
       <button class={tabs === "Incomplete" ? "active" : ""} onClick={() => setTabs("Incomplete")}>
         Incomplete
       </button>
