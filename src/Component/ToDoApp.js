@@ -5,6 +5,7 @@ import { DBUrl } from "./DBUrl";
 
 const ToDoApp = () => {
   const [toDoListData, setTodoListData] = useState("");
+  const [toDoIncomplete, setTodoIncomplete] = useState("");
 
   const fetchData = () => {
     fetch(DBUrl)
@@ -12,6 +13,9 @@ const ToDoApp = () => {
         if (!response.ok) {
           throw Error("Failed to Fetch Data!");
         } else {
+          //disable error message
+          setError(null);
+
           return response.json();
         }
       })
