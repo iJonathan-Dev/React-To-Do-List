@@ -34,6 +34,7 @@ const ToDoApp = () => {
       })
       .catch((error) => {
         console.error("Error:", error);
+        setError(true);
       });
   };
 
