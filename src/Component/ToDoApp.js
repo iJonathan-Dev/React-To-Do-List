@@ -44,6 +44,7 @@ const ToDoApp = () => {
 
   return (
     <div className="container">
+      <h1 class="title">Simply To Do List App</h1>
       <AddToDoForm fetchData={fetchData} />
       {toDoListData && <ListView toDoListData={toDoListData} fetchData={fetchData} />}
       <button class={tabs === "Incomplete" ? "active" : ""} onClick={() => setTabs("Incomplete")}>
