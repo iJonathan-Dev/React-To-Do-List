@@ -9,17 +9,23 @@ const ListView = ({ toDoListData, fetchData }) => {
   };
 
   const handleComplete = (id) => {
-    const complete = { status: "complete" };
-
     fetch(DBUrl + id, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(complete),
+      body: JSON.stringify({ status: "complete" }),
+    }).then(() => fetchData());
+  };
+
+  const handleIncomplete = (id) => {
+    fetch(DBUrl + id, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status: "incomplete" }),
     }).then(() => fetchData());
   };
 
   return (
-    <div>
+    <div class="list-view-group">
       {toDoListData.map((data) => (
         <div class="list-view-container" key={data.id}>
           <div class="list-name-container">
@@ -30,11 +36,20 @@ const ListView = ({ toDoListData, fetchData }) => {
               Delete
             </button>
           </div>
-          <div class="complete-btn-container">
-            <button id="complete-btn" onClick={() => handleComplete(data.id)}>
-              Complete
-            </button>
-          </div>
+          {data.status == "incomplete" && (
+            <div class="complete-btn-container">
+              <button id="complete-btn" onClick={() => handleComplete(data.id)}>
+                Complete
+              </button>
+            </div>
+          )}
+          {data.status == "complete" && (
+            <div class="incomplete-btn-container">
+              <button id="incomplete-btn" onClick={() => handleIncomplete(data.id)}>
+                Incomplete
+              </button>
+            </div>
+          )}
         </div>
       ))}
     </div>
