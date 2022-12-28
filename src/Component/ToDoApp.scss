@@ -1,0 +1,141 @@
+@use "../index.scss";
+
+$radius: 100px;
+
+@mixin btn-style {
+  background-color: index.$accent1;
+  box-sizing: border-box;
+  border: none;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    background-color: index.$accent2;
+  }
+}
+
+.container {
+  min-height: calc(100vh - 69px);
+}
+
+h1 {
+  color: index.$brown-1;
+  text-align: center;
+}
+
+//Form
+.form-container {
+  padding: 1% 0 5% 0;
+
+  form {
+    color: white;
+    text-align: center;
+    label {
+      display: block;
+      font-size: 25px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: index.$brown-2;
+    }
+
+    input {
+      font-size: 18px;
+      width: 400px;
+      padding: 10px 15px;
+      border-radius: $radius 0 0 $radius;
+      border: none;
+      vertical-align: middle;
+    }
+
+    button {
+      @include btn-style;
+      height: 41px;
+      border-radius: 0 $radius $radius 0;
+      padding: 0 30px;
+      vertical-align: middle;
+      font-weight: bold;
+    }
+  }
+}
+
+// To Do List Main Container
+.list-container {
+  background-color: index.$secondary-color;
+  width: 75%;
+  margin: auto;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+// Tab Button
+.tab-container {
+  text-align: center;
+  margin-bottom: 40px;
+
+  button {
+    @include btn-style;
+    padding: 15px 60px;
+    font-size: 20px;
+
+    &:hover {
+      background-color: index.$accent2;
+    }
+  }
+
+  .incomplete-btn {
+    border-radius: $radius 0 0 $radius;
+  }
+
+  .complete-btn {
+    border-radius: 0 $radius $radius 0;
+  }
+
+  .active {
+    background-color: index.$accent2;
+  }
+}
+
+// Message
+
+.message {
+  font-size: 20px;
+  font-weight: bold;
+  color: index.$brown-1;
+  text-align: center;
+}
+
+//Mobile Responsive
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  // form
+  .form-container {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    input {
+      width: 100% !important;
+      display: block;
+      box-sizing: border-box;
+      border-radius: $radius !important;
+      margin-bottom: 10px;
+    }
+
+    button {
+      border-radius: $radius !important;
+    }
+  }
+
+  //List Container
+  .list-container {
+    width: calc(100% - 30px);
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  //Tabs
+  .tab-container {
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+  }
+}

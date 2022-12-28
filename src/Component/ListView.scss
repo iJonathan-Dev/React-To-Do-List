@@ -1,0 +1,64 @@
+@use "../index.scss";
+@use "./ToDoApp.scss" as TDA;
+
+.list-view-container {
+  border: 3px solid index.$brown-2;
+  border-radius: 10px;
+  display: flex;
+  padding: 10px;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  //List Name
+  .list-name-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    p {
+      width: 100%;
+      margin: 0;
+      color: index.$brown-1;
+      font-weight: 500;
+      font-size: 17px;
+    }
+  }
+
+  //List Button delete & complete
+  .btn-container {
+    margin-bottom: 0;
+    width: 45px;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    img {
+      width: 100%;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+        filter: contrast(1.5);
+      }
+    }
+  }
+
+  //Incomplete Button
+  .incomplete-btn-container {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    button {
+      @include TDA.btn-style;
+      border-radius: TDA.$radius;
+      padding: 5px 20px;
+      font-weight: bold;
+    }
+  }
+}
+
+//Mobile Responsive
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  // List Name
+  .list-name {
+    font-size: 15px !important;
+  }
+}

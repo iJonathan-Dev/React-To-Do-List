@@ -1,5 +1,6 @@
 import React from "react";
 import { DBUrl } from "./DBUrl";
+import "./ListView.scss";
 
 const ListView = ({ toDoListData, fetchData }) => {
   const handleDelete = (id) => {
@@ -31,16 +32,12 @@ const ListView = ({ toDoListData, fetchData }) => {
           <div class="list-name-container">
             <p class="list-name">{data.title}</p>
           </div>
-          <div class="delete-btn-container">
-            <button id="delete-btn" onClick={() => handleDelete(data.id)}>
-              Delete
-            </button>
+          <div class="btn-container">
+            <img src="https://img.icons8.com/color/48/null/cancel--v1.png" id="delete-btn" alt="Delete" onClick={() => handleDelete(data.id)} />
           </div>
           {data.status == "incomplete" && (
-            <div class="complete-btn-container">
-              <button id="complete-btn" onClick={() => handleComplete(data.id)}>
-                Complete
-              </button>
+            <div class="btn-container">
+              <img src="https://img.icons8.com/color/48/null/ok--v1.png" id="complete-btn" alt="Complete" onClick={() => handleComplete(data.id)} />
             </div>
           )}
           {data.status == "complete" && (
