@@ -17,13 +17,15 @@ const AddToDoForm = ({ fetchData }) => {
   };
 
   return (
-    <form onSubmit={(e) => addToDo(e, newToDoListValue)}>
-      <label htmlFor="ToDo-List">Add To Do List</label>
-      <input type="text" id="ToDo-List" placeholder="Type here..." value={newToDoListValue} onChange={(e) => setNewTodoListValue(e.target.value)} required />
-      <button id="add-btn" type="submit">
-        Add
-      </button>
-    </form>
+    <div class="form-container">
+      <form onSubmit={(e) => addToDo(e, newToDoListValue)}>
+        <label htmlFor="ToDo-List">Add To Do List</label>
+        <input type="text" id="ToDo-List" placeholder="Type here..." value={newToDoListValue} onChange={(e) => setNewTodoListValue(e.target.value)} required />
+        <button id="add-btn" type="submit">
+          Add
+        </button>
+      </form>
+    </div>
   );
 };
 
