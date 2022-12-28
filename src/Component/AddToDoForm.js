@@ -13,7 +13,10 @@ const AddToDoForm = ({ fetchData }) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(toDo),
-    }).then(() => fetchData());
+    }).then(() => {
+      fetchData();
+      setNewTodoListValue("");
+    });
   };
 
   return (
