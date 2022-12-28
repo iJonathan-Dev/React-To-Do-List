@@ -1,0 +1,19 @@
+@use "../index.scss";
+
+#footer {
+  background-color: index.$brown-1;
+  text-align: center;
+  padding: 5px;
+  margin-top: 20px;
+  width: 100%;
+  box-sizing: border-box;
+
+  p {
+    margin: 0;
+    color: index.$main-color;
+
+    a {
+      color: index.$main-color;
+    }
+  }
+}
