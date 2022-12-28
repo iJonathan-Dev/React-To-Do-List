@@ -3,12 +3,14 @@ import { DBUrl } from "./DBUrl";
 import "./ListView.scss";
 
 const ListView = ({ toDoListData, fetchData }) => {
+  //Delete Task Function
   const handleDelete = (id) => {
     fetch(DBUrl + id, {
       method: "DELETE",
     }).then(() => fetchData());
   };
 
+  //Complete Task Function
   const handleComplete = (id) => {
     fetch(DBUrl + id, {
       method: "PATCH",
@@ -17,6 +19,7 @@ const ListView = ({ toDoListData, fetchData }) => {
     }).then(() => fetchData());
   };
 
+  //Mark Task Incomplete
   const handleIncomplete = (id) => {
     fetch(DBUrl + id, {
       method: "PATCH",

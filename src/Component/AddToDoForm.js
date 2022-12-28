@@ -4,6 +4,7 @@ import { DBUrl } from "./DBUrl";
 const AddToDoForm = ({ fetchData }) => {
   const [newToDoListValue, setNewTodoListValue] = useState("");
 
+  //Add new task to database
   const addToDo = (e, newToDoListValue) => {
     e.preventDefault();
 
